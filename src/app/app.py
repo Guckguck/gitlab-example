@@ -1,18 +1,22 @@
 from flask import Flask, jsonify, request
 app = Flask(__name__)
-# Einfache Begrüßung
+
+# Hello World output
 @app.route('/')
 def hello():
-    return "Hallo Welt!"
-# Eine Route, die einen Namen als Parameter nimmt und begrüßt
+    return "Hello World!"
+
+# A route that takes a name as a parameter and outputs a greeting
 @app.route('/hello/<name>')
 def hello_name(name):
     return f"Hallo, {name}!"
-# Eine JSON-Route, die Daten zurückgibt
+
+# A JSON-Route for data output
 @app.route('/data')
 def data():
     return jsonify({'key': 'value', 'int': 1})
-# Eine POST-Route, die Daten empfängt und etwas damit macht
+
+# A POST-Route that takes JSON-data and returns it
 @app.route('/post', methods=['POST'])
 def post_data():
     data = request.json

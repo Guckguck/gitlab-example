@@ -1,6 +1,7 @@
 import pytest
 from flask_testing import TestCase
 from app import app
+
 class MyTest(TestCase):
     def create_app(self):
         app.config['TESTING'] = True
@@ -19,8 +20,9 @@ class MyTest(TestCase):
         self.assertEqual(response.json, {'key': 'value', 'int': 1})
     def test_post_data(self):
         response = self.client.post('/post', json={'name': 'Tester'})
-        self.assertStatus(response, 201)  # Überprüft, ob der Statuscode 201 ist
+        self.assertStatus(response, 201)
         self.assertEqual(response.json, {'name': 'Tester'})
-# Führen Sie die Tests aus
+
+# Testing function
 if __name__ == '__main__':
     pytest.main()
